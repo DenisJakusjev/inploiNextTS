@@ -3,9 +3,8 @@ import {searchObjectModel} from "../interfaces/searchModel";
 import styled from "styled-components";
 import {Highlight} from "react-instantsearch-dom";
 
-
 interface IHit {
-    hit: searchObjectModel
+  hit: searchObjectModel
 }
 
 const ShowCard = styled.article`
@@ -50,7 +49,7 @@ const LogoImage = styled.img`
   box-sizing: border-box;
 `
 
-const TextHeading = styled.h3`
+const TextHeading = styled.h2`
   font-size: 1.7rem;
   font-weight: bold;
 
@@ -64,8 +63,10 @@ const Text = styled.p`
 const DescText = styled(Text)`
   white-space: pre-line;
 `
-const TextLast = styled(Text)`
-  margin-top: 2.4rem;
+const TextLast = styled.h3`
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0 0 2px;
 `
 const GrayedOut = styled.span`
   color: gray;
@@ -79,40 +80,41 @@ const ToggleButton = styled.button`
 
 
 const Hit: React.FunctionComponent<IHit> = (props) => {
-    const [textToggle, setTextToggle] = useState<boolean>(false);
-    return (
-        <ShowCard>
-            <ContentWrapper>
-                <ContentTop>
-                    <ContentLeft>
-                        <TextHeading><Highlight hit={props.hit} attribute={"data_job.job_title"}
-                                                tagName="mark"/></TextHeading>
-                        <Text>{props.hit.data_company.company_industry}</Text>
-                        <Text>{props.hit.data_company.company_type}</Text>
-                        <Text><GrayedOut>Experience: </GrayedOut>{props.hit.data_job.job_experience}</Text>
-                        <Text><GrayedOut>Salary: </GrayedOut>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}
-                        </Text>
-                        <TextLast>Job overview:</TextLast>
-                    </ContentLeft>
-                    <ContentRight>
-                        <LogoImage src={props.hit.data_company.company_logo}/>
-                        <Text>{props.hit.data_company.company_name}</Text>
-                        <Text><GrayedOut>Company members: </GrayedOut>{props.hit.data_company.company_size}</Text>
-                        <Text>{props.hit.data_location.location_country}</Text>
-                        <Text>{props.hit.data_location.location_city} {props.hit.data_location.location_postcode}</Text>
-                        <Text>{props.hit.data_location.location_address_1}</Text>
-                    </ContentRight>
-                </ContentTop>
-                {textToggle ?
-                    <DescText>{props.hit.data_job.job_description} <ToggleButton
-                        onClick={() => setTextToggle(false)}>Close</ToggleButton></DescText>
-                    :
-                    <DescText>{props.hit.data_job.job_description.substring(0, 100)}<ToggleButton
-                        onClick={() => setTextToggle(true)}>...See more?</ToggleButton></DescText>}
-            </ContentWrapper>
+  const [textToggle, setTextToggle] = useState<boolean>(false);
+  return (
+    <ShowCard>
+      <ContentWrapper>
+        <ContentTop>
+          <ContentLeft>
+            <TextHeading><Highlight hit={props.hit} attribute={"data_job.job_title"}
+                                    tagName="mark"/></TextHeading>
+            <Text>{props.hit.data_company.company_industry}</Text>
+            <Text>{props.hit.data_company.company_type}</Text>
+            <Text><GrayedOut>Experience: </GrayedOut>{props.hit.data_job.job_experience}</Text>
+            <Text><GrayedOut>Salary: </GrayedOut>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}
+            </Text>
+
+          </ContentLeft>
+          <ContentRight>
+            <LogoImage src={props.hit.data_company.company_logo}/>
+            <Text>{props.hit.data_company.company_name}</Text>
+            <Text><GrayedOut>Company members: </GrayedOut>{props.hit.data_company.company_size}</Text>
+            <Text>{props.hit.data_location.location_country}</Text>
+            <Text>{props.hit.data_location.location_city} {props.hit.data_location.location_postcode}</Text>
+            <Text>{props.hit.data_location.location_address_1}</Text>
+          </ContentRight>
+        </ContentTop>
+        <TextLast>Job overview:</TextLast>
+        {textToggle ?
+          <DescText>{props.hit.data_job.job_description} <ToggleButton
+            onClick={() => setTextToggle(false)}>Close</ToggleButton></DescText>
+          :
+          <DescText>{props.hit.data_job.job_description.substring(0, 100)}<ToggleButton
+            onClick={() => setTextToggle(true)}>...See more?</ToggleButton></DescText>}
+      </ContentWrapper>
 
 
-        </ShowCard>)
+    </ShowCard>)
 }
 
 

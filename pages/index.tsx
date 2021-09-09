@@ -24,24 +24,22 @@ const Title = styled.h1`
   margin-top: 15rem;
   font-size: 3rem;
   color: ${({theme}) => theme.colors.white};
-`
+`;
 
 const Home: NextPage = () => {
 
-    const searchClient = algoliasearch(
-        "RY8KA2GJPX", "13e751a21f2ae69d7ccb7b590a0a9b3a"
-    )
+  const searchClient = algoliasearch(
+    "RY8KA2GJPX", "13e751a21f2ae69d7ccb7b590a0a9b3a"
+  );
 
-    return (
-        <PageBody>
-            <ContentDiv>
-                <Title>inploi Test Application</Title>
-                <SearchFieldComponent searchClient={searchClient}/>
-            </ContentDiv>
-        </PageBody>
+  return (
+    <PageBody>
+      <ContentDiv>
+        <Title>inploi Test Application</Title>
+        <SearchFieldComponent searchClient={searchClient}/>
+      </ContentDiv>
+    </PageBody>
+  );
+};
 
-
-    )
-}
-
-export default Home
+export default Home;

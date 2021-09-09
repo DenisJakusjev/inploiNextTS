@@ -1,4 +1,4 @@
-import {connectSearchBox} from "react-instantsearch-dom"
+import {connectSearchBox} from "react-instantsearch-dom";
 import styled from "styled-components";
 import {useState} from "react";
 
@@ -11,7 +11,8 @@ const InputForm = styled.form`
   display: flex;
   justify-items: center;
   align-items: center;
-`
+`;
+
 const CustomInput = styled.input`
   background-color: transparent;
   border: none;
@@ -21,8 +22,9 @@ const CustomInput = styled.input`
   margin-left: 1.5rem;
   font-size: 1.8rem;
   font-weight: 600;
+  
+`;
 
-`
 const SubmitInput = styled.input`
   cursor: pointer;
   height: 80%;
@@ -34,7 +36,8 @@ const SubmitInput = styled.input`
   font-size: 2rem;
   color: ${({theme}) => theme.colors.white};
   box-sizing: border-box;
-`
+`;
+
 const HiddenLabel = styled.label`
   border-width: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important;
@@ -44,39 +47,34 @@ const HiddenLabel = styled.label`
   position: absolute !important;
   white-space: nowrap !important;
   width: 1px !important;
-
-`
+`;
 
 const SearchBox = ({
-                       currentRefinement,
-                       isSearchStalled,
-                       refine
+                     currentRefinement,
+                     isSearchStalled,
+                     refine
                    }: { currentRefinement: string, isSearchStalled: boolean, refine: Function }) => {
-    const [inputText, setInputText] = useState<string>(currentRefinement)
+  const [inputText, setInputText] = useState<string>(currentRefinement);
 
-    const sendRequest = (e: any) => {
-        e.preventDefault();
-        refine(inputText)
-    }
+  const sendRequest = (e: any) => {
+    e.preventDefault();
+    refine(inputText)
+  };
 
-    return (
-        <InputForm noValidate onSubmit={sendRequest} role="search">
-            <HiddenLabel htmlFor={"searchInput"}>Search Bar</HiddenLabel>
-            <CustomInput
-                id={"searchInput"}
-                placeholder={"Search for everything..."}
-                type="search"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-            />
-            <SubmitInput type={"submit"} value={"Search"}/>
-        </InputForm>
-
-    )
-
-
-}
-
+  return (
+    <InputForm noValidate onSubmit={sendRequest} role="search">
+      <HiddenLabel htmlFor={"searchInput"}>Search Bar</HiddenLabel>
+      <CustomInput
+        id={"searchInput"}
+        placeholder={"Search for everything..."}
+        type="search"
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+      />
+      <SubmitInput type={"submit"} value={"Search"}/>
+    </InputForm>
+  );
+};
 
 const CustomSearchBox = connectSearchBox(SearchBox);
 export default CustomSearchBox;

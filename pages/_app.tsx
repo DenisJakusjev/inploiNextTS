@@ -1,6 +1,6 @@
-import type {AppProps} from 'next/app'
+import type {AppProps} from 'next/app';
 import {createGlobalStyle, ThemeProvider} from "styled-components";
-import "/styles/globals.css"
+import "/styles/globals.css";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -8,8 +8,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
   }
-
-  ,
+  
   html {
     font-size: 62.5%;
   }
@@ -41,31 +40,24 @@ const GlobalStyle = createGlobalStyle`
     display: inline-block;
     padding: 0;
     width: 100%;
-
   }
-
-
-`
-
+`;
 
 const theme = {
-    colors: {
-        white: "white"
-    }
-}
+  colors: {
+    white: "white"
+  }
+};
 
 const MyApp = ({Component, pageProps}: AppProps) => {
-    return (
-        <>
-            <GlobalStyle/>
-            <ThemeProvider theme={theme}>
-                <Component {...pageProps} />
-            </ThemeProvider>
+  return (
+    <>
+      <GlobalStyle/>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  );
+};
 
-        </>
-
-
-    )
-}
-
-export default MyApp
+export default MyApp;
