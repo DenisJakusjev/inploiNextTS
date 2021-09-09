@@ -1,12 +1,9 @@
 import {
     InstantSearch,
     Hits,
-    Highlight
 } from 'react-instantsearch-dom';
 import HitsComponent from "./HitsComponent";
 import CustomSearchBox from "./CustomSearchBox";
-
-
 
 const AlgoliaSearchComponent = (props: any) => {
 

@@ -47,10 +47,14 @@ const HiddenLabel = styled.label`
 
 `
 
-const SearchBox = ({ currentRefinement, isSearchStalled, refine}:{currentRefinement:string,isSearchStalled:boolean,refine:Function}) => {
-    const [inputText,setInputText] =useState<string>(currentRefinement)
+const SearchBox = ({
+                       currentRefinement,
+                       isSearchStalled,
+                       refine
+                   }: { currentRefinement: string, isSearchStalled: boolean, refine: Function }) => {
+    const [inputText, setInputText] = useState<string>(currentRefinement)
 
-    const sendRequest =(e:any)=>{
+    const sendRequest = (e: any) => {
         e.preventDefault();
         refine(inputText)
     }
@@ -63,7 +67,7 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine}:{currentRefinem
                 placeholder={"Search for everything..."}
                 type="search"
                 value={inputText}
-                onChange={(e)=>setInputText(e.target.value)}
+                onChange={(e) => setInputText(e.target.value)}
             />
             <SubmitInput type={"submit"} value={"Search"}/>
         </InputForm>
@@ -72,8 +76,6 @@ const SearchBox = ({ currentRefinement, isSearchStalled, refine}:{currentRefinem
 
 
 }
-
-
 
 
 const CustomSearchBox = connectSearchBox(SearchBox);

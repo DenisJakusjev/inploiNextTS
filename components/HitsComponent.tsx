@@ -61,8 +61,8 @@ const Text = styled.p`
   margin: 0;
   padding: 0 0 2px;
 `
-const DescText= styled(Text)`
-white-space: pre-line;
+const DescText = styled(Text)`
+  white-space: pre-line;
 `
 const TextLast = styled(Text)`
   margin-top: 2.4rem;
@@ -71,12 +71,11 @@ const GrayedOut = styled.span`
   color: gray;
 `
 const ToggleButton = styled.button`
-all:unset;
+  all: unset;
   display: inline;
   cursor: pointer;
   color: blue;
 `
-
 
 
 const Hit: React.FunctionComponent<IHit> = (props) => {
@@ -86,11 +85,13 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
             <ContentWrapper>
                 <ContentTop>
                     <ContentLeft>
-                        <TextHeading><Highlight hit={props.hit} attribute={"data_job.job_title"} tagName="mark"/></TextHeading>
+                        <TextHeading><Highlight hit={props.hit} attribute={"data_job.job_title"}
+                                                tagName="mark"/></TextHeading>
                         <Text>{props.hit.data_company.company_industry}</Text>
                         <Text>{props.hit.data_company.company_type}</Text>
                         <Text><GrayedOut>Experience: </GrayedOut>{props.hit.data_job.job_experience}</Text>
-                        <Text><GrayedOut>Salary: </GrayedOut>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}</Text>
+                        <Text><GrayedOut>Salary: </GrayedOut>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}
+                        </Text>
                         <TextLast>Job overview:</TextLast>
                     </ContentLeft>
                     <ContentRight>
@@ -103,9 +104,11 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
                     </ContentRight>
                 </ContentTop>
                 {textToggle ?
-                    <DescText>{props.hit.data_job.job_description} <ToggleButton onClick={()=>setTextToggle(false)}>Close</ToggleButton></DescText>
+                    <DescText>{props.hit.data_job.job_description} <ToggleButton
+                        onClick={() => setTextToggle(false)}>Close</ToggleButton></DescText>
                     :
-                    <DescText>{props.hit.data_job.job_description.substring(0,100)}<ToggleButton onClick={()=>setTextToggle(true)}>...See more?</ToggleButton></DescText>}
+                    <DescText>{props.hit.data_job.job_description.substring(0, 100)}<ToggleButton
+                        onClick={() => setTextToggle(true)}>...See more?</ToggleButton></DescText>}
             </ContentWrapper>
 
 
