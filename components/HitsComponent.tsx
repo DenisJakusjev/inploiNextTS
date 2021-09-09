@@ -62,9 +62,21 @@ const CompanyInfo = styled.section`
   }
 `;
 
-const CompanyInfoWrapper = styled.div`
+const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const InfoMarginTop = styled(InfoWrapper)`
+
+@media only screen and (max-width: 400px){
+  margin-bottom: 1.5rem;
+}  
+  
+@media only screen and (min-width: 500px){
+  margin-top:3rem
+}  
+
 `;
 
 const LogoImage = styled.img`
@@ -89,7 +101,7 @@ const DescText = styled(Text)`
 `;
 
 const Hthree = styled.h3`
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin: 0;
   padding: 0 0 2px;
 `;
@@ -145,21 +157,22 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
             <TextHeading>
               <Highlight hit={props.hit} attribute={"data_job.job_title"} tagName="mark"/>
             </TextHeading>
-            <Text>{props.hit.data_company.company_industry}</Text>
-            <Text>{props.hit.data_company.company_type}</Text>
-            <Text><Label>Experience: </Label>{props.hit.data_job.job_experience}</Text>
-            <Text><Label>Salary: </Label>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}</Text>
-
+            <InfoMarginTop>
+              <Text>{props.hit.data_company.company_industry}</Text>
+              <Text>{props.hit.data_company.company_type}</Text>
+              <Text><Label>Experience: </Label>{props.hit.data_job.job_experience}</Text>
+              <Text><Label>Salary: </Label>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}</Text>
+            </InfoMarginTop>
           </MainInfo>
           <CompanyInfo>
             <LogoImage src={props.hit.data_company.company_logo}/>
-            <CompanyInfoWrapper>
+            <InfoWrapper>
               <Text>{props.hit.data_company.company_name}</Text>
               <Text><Label>Company members: </Label>{props.hit.data_company.company_size}</Text>
               <Text>{props.hit.data_location.location_country}</Text>
               <Text>{props.hit.data_location.location_city} {props.hit.data_location.location_postcode}</Text>
               <Text>{props.hit.data_location.location_address_1}</Text>
-            </CompanyInfoWrapper>
+            </InfoWrapper>
           </CompanyInfo>
         </ContentTop>
         <section>
@@ -169,17 +182,17 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
               <ToggleButton onClick={() => setTextToggle(false)}>Close</ToggleButton>
             </DescText>
             :
-            <DescText>{props.hit.data_job.job_description.substring(0, 150)}...
-              <ToggleButton onClick={() => setTextToggle(true)}>See more?</ToggleButton>
+            <DescText>{props.hit.data_job.job_description.substring(0, 150)}...&nbsp;
+              <ToggleButton onClick={() => setTextToggle(true)}>See more</ToggleButton>
             </DescText>}
           <LinkWrapper>
             <ApplyButton href={`${props.hit.data_job.job_deep_link}`} target={"_blank"}>Apply now!</ApplyButton>
           </LinkWrapper>
         </section>
         <CustomFooter>
-          <Label>
-            Created at: <Moment format="YYYY/MM/DD">{props.hit.data_job.job_published_at}</Moment>
-          </Label>
+          <time dateTime={props.hit.data_job.job_published_at}>
+            Published at: <Moment format="YYYY/MM/DD">{props.hit.data_job.job_published_at}</Moment>
+          </time>
         </CustomFooter>
       </ContentWrapper>
     </ShowCard>)
