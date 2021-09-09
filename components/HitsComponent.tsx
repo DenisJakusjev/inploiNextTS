@@ -11,7 +11,7 @@ const ShowCard = styled.article`
   width: 100%;
   min-height: 15rem;
   background-color: white;
-  border-radius: 1rem;
+  border-radius:10px;
   margin-bottom: .8rem;
   transition: all 0.2s;
 
@@ -127,7 +127,7 @@ const CustomFooter = styled.footer`
 `;
 
 const Hit: React.FunctionComponent<IHit> = (props) => {
-  
+
   const [textToggle, setTextToggle] = useState<boolean>(false);
 
   return (
