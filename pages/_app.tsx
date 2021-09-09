@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   html {
-    font-size: 62.5%;
+    font-size: 10px;
   }
 
   body {
@@ -24,6 +24,9 @@ const GlobalStyle = createGlobalStyle`
   & .ais-Hits {
     width: 80%;
     margin-top: 1rem;
+    @media only screen and (max-width: 400px) {
+      width:90%;
+    }
   }
 
   & .ais-Hits > ul {

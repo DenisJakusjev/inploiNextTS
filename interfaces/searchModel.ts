@@ -1,4 +1,4 @@
-export interface searchObjectModel {
+export interface SearchObjectModel {
   data_company: {
     company_id: number;
     company_name: string;

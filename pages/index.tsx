@@ -10,7 +10,7 @@ const PageBody = styled.div`
   justify-content: center;
 `;
 
-const ContentDiv = styled.div`
+const ContentDiv = styled.main`
   width: 75vw;
   min-height: 80vh;
   height: 100%;
@@ -18,18 +18,25 @@ const ContentDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media only screen and (max-width: 400px) {
+    width:100vw;
+  }
 `;
 
 const Title = styled.h1`
   margin-top: 15rem;
   font-size: 3rem;
   color: ${({theme}) => theme.colors.white};
+  @media only screen and (max-width: 400px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const Home: NextPage = () => {
 
   const searchClient = algoliasearch(
-    "RY8KA2GJPX", "13e751a21f2ae69d7ccb7b590a0a9b3a"
+    process.env.NEXT_PUBLIC_APP_ID as string, process.env.NEXT_PUBLIC_API_KEY as string
   );
 
   return (
