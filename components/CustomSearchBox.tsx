@@ -47,6 +47,9 @@ const SubmitInput = styled.input`
   }
 `;
 
+const ResetInput = styled(SubmitInput)`
+  background-color: rgba(255, 0, 89, 0.82);
+`
 const HiddenLabel = styled.label`
   border-width: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important;
@@ -86,7 +89,7 @@ const SearchBox = ({
         onChange={(e) => setInputText(e.target.value)}
       />
       <SubmitInput type={"submit"} value={"Search"}/>
-      {inputText.length? <SubmitInput type={"button"} value={"Reset"} onClick={reset} /> :
+      {inputText.length? <ResetInput type={"button"} value={"Reset"} onClick={reset} /> :
       <></>
       }
     </InputForm>

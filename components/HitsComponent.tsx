@@ -48,7 +48,7 @@ const CompanyInfo = styled.section`
   width: 50%;
   text-align: right;
   @media only screen and (max-width: 400px) {
-    padding-top: .2rem;
+    padding-top: 1.2rem;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -110,10 +110,10 @@ const LinkWrapper = styled.div`
 const ApplyButton = styled.a`
   all: unset;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.7rem;
   background-color: blue;
   color: white;
-  padding: 0.7rem;
+  padding: 0.5rem;
   border-radius: 15px;
 
   @media only screen and (max-width: 400px) {
@@ -143,7 +143,7 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
             <Text><Label>Salary: </Label>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}
             </Text>
             <LinkWrapper>
-              <ApplyButton href={`${props.hit.data_job.job_deep_link}`}>Apply
+              <ApplyButton href={`${props.hit.data_job.job_deep_link}`} target={"_blank"}>Apply
                 now!</ApplyButton>
             </LinkWrapper>
 
@@ -159,7 +159,7 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
             </CompanyInfoWrapper>
           </CompanyInfo>
         </ContentTop>
-        <article>
+        <section>
           <Hthree>Job overview:</Hthree>
           {textToggle ?
             <DescText>{props.hit.data_job.job_description} <ToggleButton
@@ -167,7 +167,7 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
             :
             <DescText>{props.hit.data_job.job_description.substring(0, 100)}<ToggleButton
               onClick={() => setTextToggle(true)}>... See more?</ToggleButton></DescText>}
-        </article>
+        </section>
         <CustomFooter>
           <Label>Created at: {props.hit.data_job.job_published_at}</Label>
         </CustomFooter>
