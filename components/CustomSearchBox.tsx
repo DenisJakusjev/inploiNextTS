@@ -13,7 +13,7 @@ const InputForm = styled.form`
   align-items: center;
   @media only screen and (max-width: 400px) {
     width: 90%;
-  }
+  };
 `;
 
 const CustomInput = styled.input`
@@ -27,8 +27,7 @@ const CustomInput = styled.input`
   font-weight: 600;
   @media only screen and (max-width: 400px) {
     font-size: 1.4rem;
-  }
-  
+  };
 `;
 
 const SubmitInput = styled.input`
@@ -43,13 +42,14 @@ const SubmitInput = styled.input`
   color: ${({theme}) => theme.colors.white};
   box-sizing: border-box;
   @media only screen and (max-width: 400px) {
-   font-size: 1.4rem;
-  }
+    font-size: 1.4rem;
+  };
 `;
 
 const ResetInput = styled(SubmitInput)`
   background-color: rgba(255, 0, 89, 0.82);
-`
+`;
+
 const HiddenLabel = styled.label`
   border-width: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important;
@@ -70,10 +70,10 @@ const SearchBox = ({
 
   const sendRequest = (e: any) => {
     e.preventDefault();
-    refine(inputText)
+    refine(inputText);
   };
 
-  const reset = ()=>{
+  const reset = () => {
     setInputText("");
     refine("");
   };
@@ -89,8 +89,8 @@ const SearchBox = ({
         onChange={(e) => setInputText(e.target.value)}
       />
       <SubmitInput type={"submit"} value={"Search"}/>
-      {inputText.length? <ResetInput type={"button"} value={"Reset"} onClick={reset} /> :
-      <></>
+      {inputText.length ? <ResetInput type={"button"} value={"Reset"} onClick={reset}/> :
+        <></>
       }
     </InputForm>
   );

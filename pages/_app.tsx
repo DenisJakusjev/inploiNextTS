@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
   }
-  
+
   html {
     font-size: 10px;
   }
@@ -25,8 +25,8 @@ const GlobalStyle = createGlobalStyle`
     width: 80%;
     margin-top: 1rem;
     @media only screen and (max-width: 400px) {
-      width:90%;
-    }
+      width: 90%;
+    };
   }
 
   & .ais-Hits > ul {
@@ -53,6 +53,7 @@ const theme = {
 };
 
 const MyApp = ({Component, pageProps}: AppProps) => {
+
   return (
     <>
       <GlobalStyle/>

@@ -1,5 +1,5 @@
-import type {NextPage} from 'next'
-import styled from "styled-components"
+import type {NextPage} from 'next';
+import styled from "styled-components";
 import SearchFieldComponent from "../components/AlgoliaSearchComponent";
 import algoliasearch from 'algoliasearch/lite';
 
@@ -20,8 +20,8 @@ const ContentDiv = styled.main`
   align-items: center;
 
   @media only screen and (max-width: 400px) {
-    width:100vw;
-  }
+    width: 100vw;
+  };
 `;
 
 const Title = styled.h1`
@@ -30,7 +30,7 @@ const Title = styled.h1`
   color: ${({theme}) => theme.colors.white};
   @media only screen and (max-width: 400px) {
     font-size: 2.5rem;
-  }
+  };
 `;
 
 const Home: NextPage = () => {

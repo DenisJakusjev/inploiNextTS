@@ -11,7 +11,7 @@ const ShowCard = styled.article`
   width: 100%;
   min-height: 15rem;
   background-color: white;
-  border-radius:10px;
+  border-radius: 10px;
   margin-bottom: .8rem;
   transition: all 0.2s;
 
@@ -19,21 +19,23 @@ const ShowCard = styled.article`
     transform: translateY(-.3rem);
     box-shadow: 0 1rem 2rem rgba(0.5, 0.5, 0.5, 0.5);
   }
-`
+
+`;
+
 const ContentWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
   padding: 0rem 1rem 1rem 1rem;
   flex-direction: column;
-`
+`;
 
 const ContentTop = styled.header`
   display: flex;
   width: 100%;
   @media only screen and (max-width: 400px) {
     flex-direction: column-reverse;
-  }
+  };
 `
 const MainInfo = styled.section`
   padding-top: 1rem;
@@ -42,8 +44,9 @@ const MainInfo = styled.section`
   height: 100%;
   @media only screen and (max-width: 400px) {
     width: 100%;
-  }
+  };
 `
+
 const CompanyInfo = styled.section`
   width: 50%;
   text-align: right;
@@ -52,7 +55,7 @@ const CompanyInfo = styled.section`
     display: flex;
     width: 100%;
     justify-content: space-between;
-  }
+  };
 `
 const CompanyInfoWrapper = styled.div`
   display: flex;
@@ -72,7 +75,6 @@ const TextHeading = styled.h2`
 
 `;
 
-
 const Text = styled.p`
   font-size: 1.2rem;
   margin: 0;
@@ -82,6 +84,7 @@ const Text = styled.p`
 const DescText = styled(Text)`
   white-space: pre-line;
 `;
+
 const Hthree = styled.h3`
   font-size: 1.2rem;
   margin: 0;
@@ -104,7 +107,7 @@ const LinkWrapper = styled.div`
   margin-left: 1rem;
   @media only screen and (max-width: 400px) {
     margin-bottom: 2rem;
-  }
+  };
 `;
 
 const ApplyButton = styled.a`
