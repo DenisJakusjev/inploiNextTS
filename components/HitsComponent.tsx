@@ -100,34 +100,36 @@ const ToggleButton = styled.button`
 `;
 
 const LinkWrapper = styled.div`
-  margin-top:2rem;
+  margin-top: 2rem;
   margin-left: 1rem;
-  @media only screen and (max-width: 400px){
+  @media only screen and (max-width: 400px) {
     margin-bottom: 2rem;
   }
 `;
 
 const ApplyButton = styled.a`
-  all:unset;
+  all: unset;
   cursor: pointer;
   font-size: 2rem;
   background-color: blue;
-  color:white;
+  color: white;
   padding: 0.7rem;
   border-radius: 15px;
-  
-  @media only screen and (max-width: 400px){
+
+  @media only screen and (max-width: 400px) {
     font-size: 1.4rem;
   };
 `;
 
 const CustomFooter = styled.footer`
+  margin-top: auto;
+  margin-left: auto;
+`;
 
-
-`
 const Hit: React.FunctionComponent<IHit> = (props) => {
-  console.log(props.hit)
+  
   const [textToggle, setTextToggle] = useState<boolean>(false);
+
   return (
     <ShowCard>
       <ContentWrapper>
@@ -138,7 +140,8 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
             <Text>{props.hit.data_company.company_industry}</Text>
             <Text>{props.hit.data_company.company_type}</Text>
             <Text><Label>Experience: </Label>{props.hit.data_job.job_experience}</Text>
-            <Text><Label>Salary: </Label>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}</Text>
+            <Text><Label>Salary: </Label>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}
+            </Text>
             <LinkWrapper>
               <ApplyButton href={`${props.hit.data_job.job_deep_link}`}>Apply
                 now!</ApplyButton>
@@ -165,7 +168,9 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
             <DescText>{props.hit.data_job.job_description.substring(0, 100)}<ToggleButton
               onClick={() => setTextToggle(true)}>... See more?</ToggleButton></DescText>}
         </article>
-
+        <CustomFooter>
+          <Label>Created at: {props.hit.data_job.job_published_at}</Label>
+        </CustomFooter>
       </ContentWrapper>
 
 
