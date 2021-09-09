@@ -149,9 +149,7 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
             <Text>{props.hit.data_company.company_type}</Text>
             <Text><Label>Experience: </Label>{props.hit.data_job.job_experience}</Text>
             <Text><Label>Salary: </Label>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}</Text>
-            <LinkWrapper>
-              <ApplyButton href={`${props.hit.data_job.job_deep_link}`} target={"_blank"}>Apply now!</ApplyButton>
-            </LinkWrapper>
+
           </MainInfo>
           <CompanyInfo>
             <LogoImage src={props.hit.data_company.company_logo}/>
@@ -171,9 +169,12 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
               <ToggleButton onClick={() => setTextToggle(false)}>Close</ToggleButton>
             </DescText>
             :
-            <DescText>{props.hit.data_job.job_description.substring(0, 100)}...
+            <DescText>{props.hit.data_job.job_description.substring(0, 150)}...
               <ToggleButton onClick={() => setTextToggle(true)}>See more?</ToggleButton>
             </DescText>}
+          <LinkWrapper>
+            <ApplyButton href={`${props.hit.data_job.job_deep_link}`} target={"_blank"}>Apply now!</ApplyButton>
+          </LinkWrapper>
         </section>
         <CustomFooter>
           <Label>
