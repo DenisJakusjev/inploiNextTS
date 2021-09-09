@@ -16,7 +16,6 @@ const AlgoliaSearchComponent = (props: any) => {
             <Hits hitComponent={HitsComponent}/>
         </InstantSearch>
     )
-
 }
 
 
