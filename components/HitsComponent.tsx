@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {SearchObjectModel} from "../interfaces/searchModel";
 import styled from "styled-components";
 import {Highlight} from "react-instantsearch-dom";
+import Moment from "react-moment";
 
 interface IHit {
   hit: SearchObjectModel
@@ -19,7 +20,6 @@ const ShowCard = styled.article`
     transform: translateY(-.3rem);
     box-shadow: 0 1rem 2rem rgba(0.5, 0.5, 0.5, 0.5);
   }
-
 `;
 
 const ContentWrapper = styled.div`
@@ -33,34 +33,38 @@ const ContentWrapper = styled.div`
 const ContentTop = styled.header`
   display: flex;
   width: 100%;
+  
   @media only screen and (max-width: 400px) {
     flex-direction: column-reverse;
-  };
-`
+  }
+`;
+
 const MainInfo = styled.section`
   padding-top: 1rem;
   width: 50%;
   text-align: left;
   height: 100%;
+  
   @media only screen and (max-width: 400px) {
     width: 100%;
-  };
-`
+  }
+`;
 
 const CompanyInfo = styled.section`
   width: 50%;
   text-align: right;
+  
   @media only screen and (max-width: 400px) {
     padding-top: 1.2rem;
     display: flex;
     width: 100%;
     justify-content: space-between;
-  };
-`
+  }
+`;
+
 const CompanyInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
 `;
 
 const LogoImage = styled.img`
@@ -72,7 +76,6 @@ const LogoImage = styled.img`
 const TextHeading = styled.h2`
   font-size: 1.7rem;
   font-weight: bold;
-
 `;
 
 const Text = styled.p`
@@ -105,9 +108,10 @@ const ToggleButton = styled.button`
 const LinkWrapper = styled.div`
   margin-top: 2rem;
   margin-left: 1rem;
+  
   @media only screen and (max-width: 400px) {
     margin-bottom: 2rem;
-  };
+  }
 `;
 
 const ApplyButton = styled.a`
@@ -121,7 +125,7 @@ const ApplyButton = styled.a`
 
   @media only screen and (max-width: 400px) {
     font-size: 1.4rem;
-  };
+  }
 `;
 
 const CustomFooter = styled.footer`
@@ -138,18 +142,16 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
       <ContentWrapper>
         <ContentTop>
           <MainInfo>
-            <TextHeading><Highlight hit={props.hit} attribute={"data_job.job_title"}
-                                    tagName="mark"/></TextHeading>
+            <TextHeading>
+              <Highlight hit={props.hit} attribute={"data_job.job_title"} tagName="mark"/>
+            </TextHeading>
             <Text>{props.hit.data_company.company_industry}</Text>
             <Text>{props.hit.data_company.company_type}</Text>
             <Text><Label>Experience: </Label>{props.hit.data_job.job_experience}</Text>
-            <Text><Label>Salary: </Label>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}
-            </Text>
+            <Text><Label>Salary: </Label>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}</Text>
             <LinkWrapper>
-              <ApplyButton href={`${props.hit.data_job.job_deep_link}`} target={"_blank"}>Apply
-                now!</ApplyButton>
+              <ApplyButton href={`${props.hit.data_job.job_deep_link}`} target={"_blank"}>Apply now!</ApplyButton>
             </LinkWrapper>
-
           </MainInfo>
           <CompanyInfo>
             <LogoImage src={props.hit.data_company.company_logo}/>
@@ -165,20 +167,22 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
         <section>
           <Hthree>Job overview:</Hthree>
           {textToggle ?
-            <DescText>{props.hit.data_job.job_description} <ToggleButton
-              onClick={() => setTextToggle(false)}>Close</ToggleButton></DescText>
+            <DescText>{props.hit.data_job.job_description}
+              <ToggleButton onClick={() => setTextToggle(false)}>Close</ToggleButton>
+            </DescText>
             :
-            <DescText>{props.hit.data_job.job_description.substring(0, 100)}<ToggleButton
-              onClick={() => setTextToggle(true)}>... See more?</ToggleButton></DescText>}
+            <DescText>{props.hit.data_job.job_description.substring(0, 100)}...
+              <ToggleButton onClick={() => setTextToggle(true)}>See more?</ToggleButton>
+            </DescText>}
         </section>
         <CustomFooter>
-          <Label>Created at: {props.hit.data_job.job_published_at}</Label>
+          <Label>
+            Created at: <Moment format="YYYY/MM/DD">{props.hit.data_job.job_published_at}</Moment>
+          </Label>
         </CustomFooter>
       </ContentWrapper>
-
-
     </ShowCard>)
-}
+};
 
 
-export default Hit
+export default Hit;

@@ -24,9 +24,10 @@ const GlobalStyle = createGlobalStyle`
   & .ais-Hits {
     width: 80%;
     margin-top: 1rem;
+    
     @media only screen and (max-width: 400px) {
       width: 90%;
-    };
+    }
   }
 
   & .ais-Hits > ul {

@@ -11,9 +11,10 @@ const InputForm = styled.form`
   display: flex;
   justify-items: center;
   align-items: center;
+  
   @media only screen and (max-width: 400px) {
     width: 90%;
-  };
+  }
 `;
 
 const CustomInput = styled.input`
@@ -25,9 +26,10 @@ const CustomInput = styled.input`
   margin-left: 1.5rem;
   font-size: 1.8rem;
   font-weight: 600;
+  
   @media only screen and (max-width: 400px) {
     font-size: 1.4rem;
-  };
+  }
 `;
 
 const SubmitInput = styled.input`
@@ -41,9 +43,10 @@ const SubmitInput = styled.input`
   font-size: 2rem;
   color: ${({theme}) => theme.colors.white};
   box-sizing: border-box;
+  
   @media only screen and (max-width: 400px) {
     font-size: 1.4rem;
-  };
+  }
 `;
 
 const ResetInput = styled(SubmitInput)`
@@ -66,6 +69,7 @@ const SearchBox = ({
                      isSearchStalled,
                      refine
                    }: { currentRefinement: string, isSearchStalled: boolean, refine: Function }) => {
+
   const [inputText, setInputText] = useState<string>(currentRefinement);
 
   const sendRequest = (e: any) => {

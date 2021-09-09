@@ -21,16 +21,17 @@ const ContentDiv = styled.main`
 
   @media only screen and (max-width: 400px) {
     width: 100vw;
-  };
+  }
 `;
 
 const Title = styled.h1`
   margin-top: 15rem;
   font-size: 3rem;
   color: ${({theme}) => theme.colors.white};
+  
   @media only screen and (max-width: 400px) {
     font-size: 2.5rem;
-  };
+  }
 `;
 
 const Home: NextPage = () => {
