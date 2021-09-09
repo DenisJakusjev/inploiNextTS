@@ -67,7 +67,7 @@ const InfoWrapper = styled.div`
   flex-direction: column;
 `;
 
-const InfoMarginTop = styled(InfoWrapper)`
+const InfoTop = styled(InfoWrapper)`
 
 @media only screen and (max-width: 400px){
   margin-bottom: 1.5rem;
@@ -157,12 +157,12 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
             <TextHeading>
               <Highlight hit={props.hit} attribute={"data_job.job_title"} tagName="mark"/>
             </TextHeading>
-            <InfoMarginTop>
+            <InfoTop>
               <Text>{props.hit.data_company.company_industry}</Text>
               <Text>{props.hit.data_company.company_type}</Text>
               <Text><Label>Experience: </Label>{props.hit.data_job.job_experience}</Text>
               <Text><Label>Salary: </Label>{props.hit.data_job.job_wage_type} {props.hit.data_job.job_wage_currency}{props.hit.data_job.job_wage.toString()}</Text>
-            </InfoMarginTop>
+            </InfoTop>
           </MainInfo>
           <CompanyInfo>
             <LogoImage src={props.hit.data_company.company_logo}/>
