@@ -101,7 +101,7 @@ const DescText = styled(Text)`
 `;
 
 const Hthree = styled.h3`
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin: 0;
   padding: 0 0 2px;
 `;
