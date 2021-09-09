@@ -179,7 +179,7 @@ const Hit: React.FunctionComponent<IHit> = (props) => {
           <Hthree>Job overview:</Hthree>
           {textToggle ?
             <DescText>{props.hit.data_job.job_description}
-              <ToggleButton onClick={() => setTextToggle(false)}>Close</ToggleButton>
+              <ToggleButton onClick={() => setTextToggle(false)}>Less</ToggleButton>
             </DescText>
             :
             <DescText>{props.hit.data_job.job_description.substring(0, 150)}...&nbsp;
